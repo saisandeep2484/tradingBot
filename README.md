@@ -16,8 +16,11 @@ tradingBot-main/
 │   └── price_logger.py        # Market data logging (renamed to MarketDataLogger)
 ├── strategies/                 # Trading strategies
 │   └── macd_strategy.py       # MACD-based trading strategy
-├── utils/                      # Utility functions and indicators
-│   └── technical_indicators.py # MACD and other technical indicators
+├── indicators/                 # Technical indicators
+│   ├── __init__.py           # Package initialization
+│   ├── base.py               # Base indicator class
+│   └── macd.py               # MACD indicator implementation
+├── utils/                     # Utility functions
 ├── backtesting/               # Backtesting engine
 │   └── backtest_engine.py     # Strategy backtesting functionality
 ├── data_dump/                 # Raw data storage
@@ -34,7 +37,10 @@ tradingBot-main/
 
 ### Trading Strategies
 - **MACDStrategy**: Implements MACD-based buy/sell signals for backtesting
+
+### Technical Indicators
 - **MACDIndicator**: Real-time MACD calculation for live trading
+- **BaseIndicator**: Abstract base class for all technical indicators
 
 ### Features
 - Real-time market data streaming
