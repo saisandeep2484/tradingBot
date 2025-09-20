@@ -22,7 +22,8 @@ tradingBot-main/
 │   └── macd.py               # MACD indicator implementation
 ├── utils/                     # Utility functions
 ├── backtesting/               # Backtesting engine
-│   └── backtest_engine.py     # Strategy backtesting functionality
+│   ├── backtest_engine.py     # Strategy backtesting functionality
+│   └── report_dump/           # Backtesting reports and visualizations
 ├── data_dump/                 # Raw data storage
 ├── order_data/                # Order execution logs
 └── stock_data/                # Historical and live price data
@@ -72,10 +73,33 @@ Update `config/config.py` with your Kite Connect credentials:
 - matplotlib
 - kiteconnect
 
-## Recent Improvements
+## Backtesting
 
-- Reorganized codebase into logical modules
-- Renamed classes for better clarity (KiteSession → BrokerageClient, PriceLogger → MarketDataLogger)
-- Improved method naming conventions
-- Added proper package structure with __init__.py files
-- Enhanced documentation and type hints
+The trading bot includes a comprehensive backtesting engine that allows you to test your strategies against historical data before deploying them in live trading.
+
+### Features
+- **Historical Data Analysis**: Test strategies against historical market data
+- **Performance Metrics**: Generate detailed performance reports including:
+  - Total returns and percentage gains
+  - Win/loss ratios
+  - Maximum drawdown
+  - Sharpe ratio
+  - Trade statistics
+- **Visual Reports**: Automatic generation of charts and graphs showing:
+  - Price movements with buy/sell signals
+  - Portfolio value over time
+  - Trade entry and exit points
+- **Multi-timeframe Support**: Test strategies across different timeframes (1 minute, 10 minutes, 1 day)
+- **CSV Export**: Export detailed trade logs and performance metrics
+
+### Usage
+1. Place your historical data in the `stock_data/` directory
+2. Configure your strategy parameters in the respective strategy files
+3. Run the backtesting engine: `python backtesting/backtest_engine.py`
+4. View results in the `backtesting/report_dump/` directory
+
+### Report Outputs
+- **Signal Files**: CSV files containing all buy/sell signals with timestamps
+- **Trade Logs**: Detailed records of all executed trades
+- **Performance Charts**: PNG visualizations of strategy performance
+- **Summary Reports**: Multi-timeframe performance summaries
